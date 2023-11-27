@@ -1,0 +1,57 @@
+{% set active_page = 'members' %}
+
+{% include 'admin_header.html' %}
+
+<body class = 'body'>
+
+<div style = 'padding-top: 20px; padding-bottom: 20px;'  id = 'content-container' class = 'container'>
+	
+	<!--<div class = 'add-button'>
+		<a class = 'button' href = '/administration/members/add'>Add Member</a>
+	</div>-->
+
+	<table class = 'table'>
+		<thead>
+			<tr>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Actions</th>
+			</tr>
+			
+
+		</thead>
+
+		<tbody> {% for username in add_members %}
+			<tr> 
+				<td>{{ username.username }}</td>
+				<td>{{ username.password }}</td>
+				<td><a href = '/administration/members/delete/{{username.id}}'>Delete</a></td>
+				
+
+			</tr>
+
+			{% endfor %}
+
+		</tbody>
+
+
+	</table>
+
+	 </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}
+
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+{% set active_page = 'games' %}
+
+{% include 'header.html' %}
+
+<body class = 'body'>
+	<main>
+		<div id = 'content-container' class = 'container'>
+			{% if session['logged_in'] %}
+			<h2 class = 'sub-heading'>Quiz Game!</h2>
+			<table class = 'table' border = '1'>
+				<thead>
+					<tr>
+						<th>Highest Scores</th>
+					</tr>
+				</thead>
+			<tbody>
+			{% for score in games %}
+			<tr>
+				<td>{{ score.score }}</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+			</table>
+
+		
+			<form class = 'quiz-form' action = '/games/' method = 'post'>
+				{% for question in questions %}
+				<p>{{ question['question'] }}</p>
+				{% for option in question['options'] %}
+				<input type = 'radio' name = '{{ question["question_id"] }}' value = '{{ option }}'>{{ option }}<br>
+				{% endfor %}
+				<input type = 'hidden' name = 'question_id' value = '{{ question["question_id"] }}'>
+				<br>
+			{% endfor %}
+
+			<button id = 'button' type = 'submit'>Submit</button>
+			</form>
+
+			{% else %}
+
+			<h3 class = 'account-redirect'>You need to <a href = '/register/'>create an account</a> or <a href = '/login/'>login</a> to access this quiz!</h3>
+
+
+			{% endif %}
+
+		</div>
+
+			
+	</main>
+
+
+
+
+
+
+
+	{% include 'footer.html' %}
+
+</body>
+</html>

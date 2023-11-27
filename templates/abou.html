@@ -1,0 +1,58 @@
+{% set active_page = 'home' %}
+
+{% include 'header.html' %}
+
+<body class = 'body'>
+
+	<main>
+		<div id = 'content-container' class = 'container'>
+			<h2 class = 'sub-heading'>About The Author!</h2>
+			<div class = 'info-box'>
+				<div class = 'info-content'>
+					<div class = 'container'>
+						<div class = 'row'>
+							<div class = 'col-sm-4'>
+							</div>
+
+							<div class = 'col-sm-8'>
+							</div>
+
+				</div>
+				<div class = 'toggle-btn'>Toggle</div>
+			</div>
+
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function(){
+			var infoBoxes = document.querySelectorAll('.info-box');
+
+			infoBoxes.forEach(function (box){
+				var toggleBtn = box.querySelector('.toggle-btn');
+
+				toggleBtn.addEventListener('click', function() {
+					box.classList.toggle('open');
+				});
+
+
+				toggleBtn.style.display = 'block';
+
+				});
+		});
+
+	</script>
+
+
+
+		</div>
+
+
+
+	</main>
+
+{% include 'footer.html' %}
+
+</body>
+
+</html>
+
+

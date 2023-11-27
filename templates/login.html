@@ -1,0 +1,48 @@
+{% set active_page = 'login' %}
+
+{% include 'header.html'  %}
+
+<body class = 'body'>
+
+<main>
+
+	<div id = 'content-container' class = 'container'>
+		<div id = 'form-row' class = 'row'>
+			<div class = 'col-md-6 mb-3'>
+				<img class = 'register-image' src = '{{ url_for("static", filename = "img/percyjacksonpicture.png")}}'>
+			</div>
+			<div id = 'form-content' class = 'col-md-6'>
+				<h2 class = 'signin-text mb-3'>LOGIN</h2>
+				<form action = '/login/' method = 'POST'>
+					<div class = 'form-group'>
+						<label for = 'username'>Username</label>
+						<input type = 'text' name = 'username' autofocus required class = 'form-control'>
+					</div>
+					<div class = 'form-group'>
+						<label for = 'password'>Password</label>
+						<input type = 'password' name = 'password' required class = 'form-control'>	<a href = '/adminlogin/'>Admin Login</a>
+					</div>
+					<button id = 'button' class = 'btn btn-class'>Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+{% include 'footer.html'  %}
+
+</body>
+
+</html>
+

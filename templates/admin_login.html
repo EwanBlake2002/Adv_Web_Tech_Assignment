@@ -1,0 +1,46 @@
+{% include 'header.html'  %}
+
+<body class = 'body'>
+
+<main>
+
+	<div id = 'content-container' class = 'container'>
+		<div id = 'form-row' class = 'row'>
+			<div class = 'col-md-6 mb-3'>
+				<img class = 'register-image' src = '{{ url_for("static", filename = "img/percyjacksonpicture.png")}}'>
+			</div>
+			<div id = 'form-content' class = 'col-md-6'>
+				<h2 class = 'signin-text mb-3'>ADMIN LOGIN</h2>
+				<form action = '/adminlogin/' method = 'POST'>
+					<div class = 'form-group'>
+						<label for = 'adminUsername'>Username</label>
+						<input type = 'text' name = 'adminUsername' id = 'adminUsername' autofocus required class = 'form-control'>
+					</div>
+					<div class = 'form-group'>
+						<label for = 'adminPassword'>Password</label>
+						<input type = 'password' name = 'adminPassword' id = adminPassword' required class = 'form-control'>
+					</div>
+					<button id = 'button' class = 'btn btn-class'>Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+{% include 'footer.html'  %}
+
+</body>
+
+</html>
+

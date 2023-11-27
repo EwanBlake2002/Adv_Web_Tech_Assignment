@@ -1,0 +1,43 @@
+{% set active_page = 'book_gallery' %}
+
+{% include 'header.html' %}
+
+<body class = 'body'>
+	<main>
+		<div id = 'content-container' class = 'container'>
+			<h2 class = 'sub-heading'>The Journey Of Percy Jackson!</h2>
+			{% for book_title in book_gallery %}
+			<div id = 'bookSection' class = 'container'>
+				<div class = 'row'>
+					<div class = 'col-sm-4'>
+						<img class = 'bookGalleryCover' src = '{{ book_title.file_path_route }}'>
+					</div>
+					<div class = 'col-sm-8'>
+						<div class = 'boxed-content'>
+							<p class = 'bookGalleryText'>
+							{{ book_title.book_description }}
+							</p>
+							<div class = 'bookGalleryButton'>
+							<a id = 'bookGalleryButton' class = 'button' href = '/bookgallery/{{book_title.id}}'>Find Out More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			
+
+                    
+			<hr class = 'bookGalleryLine'>
+			{% endfor %}
+
+
+		</div>
+	</main>
+
+{% include 'footer.html' %}
+
+
+
+</body>
+</html>

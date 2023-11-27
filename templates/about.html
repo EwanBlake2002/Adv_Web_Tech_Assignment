@@ -1,0 +1,91 @@
+{% set active_page = 'about' %}
+
+{% include 'header.html' %}
+
+<body class = 'body'>
+
+	<main>
+		<div id = 'content-container' class = 'container'>
+			<h2 class = 'sub-heading'>About The Author!</h2>
+			<div class = 'info-box'>
+				<div class = 'info-content'>
+					<div class = 'container'>
+						<div class = 'row'>
+							<div class = 'col-sm-4'>
+								<img class = 'index-images' src = '{{ url_for("static", filename = "img/rickriordan.png") }}'>
+							</div>
+
+							<div class = 'col-sm-8'>
+								<p class = 'bodyText'>Rick Riordan is the #1 New York Times bestselling author of over twenty novels for young readers, including the Percy Jackson series.
+
+								For fifteen years, Rick taught English and history at public and private middle schools in the San Francisco Bay Area and in Texas. While teaching in San Antonio, Saint Mary’s Hall honored him with the school’s first Master Teacher Award.
+
+								While teaching full time, Riordan began writing mystery novels for grownups. His Tres Navarre series went on to win the top three national awards in the mystery genre – the Edgar, the Anthony and the Shamus. Riordan turned to children’s fiction when he started The Lightning Thief as a bedtime story for his oldest son.
+
+								Today, over 190 million copies of his books are in print worldwide, and rights have been sold into more than 37 countries. Rick and his wife Becky are both executive producers overseeing TV/film adaptations of his works including Percy Jackson, the Kane Chronicles and Daughter of the Deep.
+
+								Rick Riordan now writes full-time. He lives in Boston with his wife and two sons.</p>
+							</div>
+
+				</div>
+					</div>
+				</div>	
+				<div class = 'toggle-btn'>Toggle</div>
+			</div>
+
+			<h2 class = 'sub-heading'>How Percy Jackson The Series Was Born!</h2>
+			<div class = 'info-box'>
+				<div class = 'info-content'>
+					<div class = 'container'>
+						<div class = 'row'>
+							<div class = 'col-sm-4'>
+								<img class = 'index-images' src = '{{ url_for("static", filename = "img/percyjacksonpicture.png")}}'>
+							</div>
+							<div class = 'col-sm-8'>
+								<p class = 'bodyText'>Development of the character Percy Jackson began when Rick Riordan started inventing stories for his son Haley Riordan, who was diagnosed with ADHD and dyslexia in the spring of 2002. When Haley was in second grade and he was studying Greek mythology, he asked his father to tell him bedtime stories based on those myths. When his father ran out of ideas, Haley suggested that he make up new stories that combined existing mythological characters with new ones. This led Riordan to create the fictional character of Percy Jackson and the story of his travels across the United States to recover Zeus's lightning-bolt. Haley then suggested it be written as a novel. Riordan received input on the manuscript from some of his middle school students before taking the idea of Percy Jackson to a publisher.
+
+								Riordan has said that Percy Jackson's original character was "inspired by my son's own struggle" at school. Haley and Percy have been cited as the "same age" and share several character traits, though they are by no means the same person.Riordan has also stated that Percy has "[his] sense of humor" and is also "based on many of the students [he has] had in the past."</p>
+
+							</div>
+						</div>
+					</div>
+					<div class = 'toggle-btn'>Toggle</div>
+			</div>
+
+
+
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function(){
+			var infoBoxes = document.querySelectorAll('.info-box');
+
+			infoBoxes.forEach(function (box){
+				var toggleBtn = box.querySelector('.toggle-btn');
+
+				toggleBtn.addEventListener('click', function() {
+					box.classList.toggle('open');
+				});
+
+
+				toggleBtn.style.display = 'block';
+
+				});
+		});
+
+	</script>
+
+
+
+		</div>
+
+
+
+	</main>
+
+{% include 'footer.html' %}
+
+</body>
+
+</html>
+
+

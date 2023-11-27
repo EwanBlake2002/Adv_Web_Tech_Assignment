@@ -1,0 +1,184 @@
+from flask import Flask, flash, redirect, request, url_for, render_template, session, logging
+from flask_sqlalchemy import SQLAlchemy
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///members.db'
+app.config['SQLALCHEMY_DATABASE_URI2'] = 'sqlite:///bookdetails.db'
+app.config['SQLALCHEMY_DATABASE_URI3']= 'sqlite:///adminmembers.db'
+db = SQLAlchemy(app)
+
+class Members(db.Model):
+
+    __tablename__ = 'members'
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.Text, nullable=False)
+    password = db.Column(db.Text, nullable=False)
+    admin_status = db.Column(db.Integer, nullable=False, default = 0)
+
+    def __repr__(self):
+        return 'Username' + 'Password' + 'Admin Status' +  str(self.id)
+
+class BookDetails(db.Model):
+    __tablename__ = 'book_details'
+
+    id = db.Column(db.Integer, primary_key=True)
+    book_title = db.Column(db.Text, nullable=False)
+    book_description = db.Column(db.Text, nullable=False)
+    book_cover = db.Column(db.Text, nullable=False)
+    book_quote_one = db.Column(db.Text, nullable=False)
+    book_quote_two = db.Column(db.Text, nullable=False)
+    book_quote_three = db.Column(db.Text, nullable=False)
+    book_quote_four = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return 'Book Title' + 'Book Description' + 'Book Cover' + 'Book Quote One' + 'Book Quote Two' + 'Book Quote Three' + 'Book Quote Four' + str(self.id)
+
+class AdminMembers(db.Model):
+    __tablename__ = 'admin_members'
+
+    id = db.Column(db.Integer, primary_key=True)
+    admin_member = db.Column(db.Text, nullable=False)
+    admin_password = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return 'Admin Member' + 'Admin Password' + str(self.id)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/bookgallery/')
+def book_gallery():
+    return render_template('index.html')
+
+@app.route('/bookgallery/booktitle/')
+def book():
+    return render_template('index.html')
+
+
+@app.route('/contact/')
+def contact():
+    return render_template('index.html')
+
+@app.route('/about/')
+def about():
+    return render_template('index.html')
+
+@app.route('/login/', methods = ['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        login = Members.query.filter_by(username=username, password=password, admin_status=admin_status).first()
+        if login is not None:
+            return redirect(url_for('index'))
+        else:
+            return redirect(url_for('login'))
+
+    return render_template('login.html')
+
+@app.route('/register/', methods = ['GET' , 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['username']
+
+        register = Members(username = username, password = password)
+        db.session.add(register)
+        db.session.commit()
+
+        return redirect(url_for('login'))
+    return render_template('register.html')
+
+@app.route('/administration/members/', methods=['POST', 'GET'])
+def add_members():
+    if request.method == 'POST':
+        db.session.add(Members(
+            username=request.form['username'],
+            password=request.form['password'],
+            admin_status=request.form['adminStatus'],
+        ))
+        db.session.commit()
+        return redirect('/administration/members/')
+
+    add_members = Members.query.all()
+    return render_template('members.html', add_members=add_members)
+
+@app.route('/administration/members/edit/<int:id>', methods = ['GET', 'POST'])
+def edit_members(id):
+   username_obj = Members.query.get(id)
+   if request.method == 'POST':
+       username_obj.username = request.form['username']
+       username_obj.password = request.form['password']
+       username_obj.admin_status = request.form['adminStatus']
+       db.session.commit()
+       return redirect('/administration/members/')
+   else:
+       return render_template('members_edit.html', username=username_obj, password=username_obj, admin_status=username_obj)
+
+@app.route('/administration/members/delete/<int:id>')
+def delete_members(id):
+    username_obj = Members.query.get(id)
+    db.session.delete(username_obj)
+    db.session.commit()
+    return redirect('/administration/members/')
+
+@app.route('/administration/bookdetails/', methods = ['POST', 'GET'])
+def add_book_details():
+    if request.method == 'POST':
+        db.session.add(BookDetails(
+            book_title=request.form['bookTitle'],
+            book_description=request.form['bookDescription'],
+            book_cover=request.form['bookCover'],
+            book_quote_one=request.form['bookquoteOne'],
+            book_quote_two=request.form['bookquoteTwo'],
+            book_quote_three=request.form['bookquoteThree'],
+            book_quote_four=request.form['bookquoteFour'],
+        ))
+        db.session.commit()
+        return redirect('/administration/bookdetails/')
+
+    add_book_details = BookDetails.query.all()
+    return render_template('book_details.html', add_book_details=add_book_details)
+            
+@app.route('/administration/bookdetails/edit/<int:id>', methods = ['GET', 'POST'])
+def edit_book_details(id):
+    book_title_obj = BookDetails.query.get(id)
+    if request.method == 'POST':
+        book_title_obj.book_title = request.form['bookTitle']
+        book_title_obj.book_description = request.form['bookDescription']
+        book_title_obj.book_cover = request.form['bookCover']
+        book_title_obj.book_quote_one = request.form['bookquoteOne']
+        book_title_obj.book_quote_two = request.form['bookquoteTwo']
+        book_title_obj.book_quote_three = request.form['bookquoteThree']
+        book_title_obj.book_quote_four = request.form['bookquoteFour']
+        db.session.commit()
+        return redirect('/administration/bookdetails/')
+    else:
+        return render_template('book_details_edit.html', book_title=book_title_obj, book_description=book_title_obj, book_cover=book_title_obj, book_quote_one=book_title_obj, book_quote_two=book_title_obj, book_quote_three=book_title_obj, book_quote_four=book_title_obj)
+
+@app.route('/administration/bookdetails/delete/<int:id>')
+def delete_book_details(id):
+    book_title_obj = BookDetails.query.get(id)
+    db.session.delete(book_title_obj)
+    db.session.commit()
+    return redirect('/administration/bookdetails/')
+
+@app.route('/administration/adminmembers/', methods = ['POST' , 'GET'])
+def admin_members():
+    if request.method == 'POST':
+        db.session.add(AdminMembers(
+            admin_username = request.form['adminUsername'],
+            admin_password = request.form['adminPassword'],
+            ))
+    admin_members = AdminMembers.query.all()
+    return render_template('admin_members.html', admin_members=admin_members)
+
+
+if __name__ == "__main__":
+    db.create.all()
+    app.run(host='0.0.0.0', debug=True)
+
+

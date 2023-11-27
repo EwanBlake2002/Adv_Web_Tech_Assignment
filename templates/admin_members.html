@@ -1,0 +1,70 @@
+{% set active_page = 'admin_members' %}
+
+{% include 'admin_header.html' %}
+
+<body class = 'body'>
+
+<div style = 'padding-top: 20px; padding-bottom: 20px;'  id = 'content-container' class = 'container'>
+	
+	<!--<div class = 'add-button'>
+		<a class = 'button' href = '/administration/members/add'>Add Member</a>
+	</div>-->
+
+	<h2 class = 'admin-heading'>Add A New Member:</h2>
+	<form class = 'admin-form' action="/administration/adminmembers/" method="POST">
+		<label for = 'adminUsername'>Admin Username:</label>    
+		<input type = 'text' name = "adminUsername" required id="adminUsername">
+		        <br>
+			<label for = 'adminPassword'>Admin Password:</label>
+			<input type = 'password' name = 'adminPassword' required id = 'adminPassword'>
+			<br>
+		
+			    <br>
+			        <input class = 'button' type="submit" value="Post">
+	</form>
+	<hr>
+	<table class = 'table'>
+		<thead>
+			<tr>
+				<th>Admin Username</th>
+				<th>Admin Password</th>
+				<th>Actions</th>
+			</tr>
+			
+
+		</thead>
+
+		<tbody> {% for admin_username in admin_members %}
+			<tr> 
+				<td>{{ admin_username.admin_username }}</td>
+				<td>{{ admin_username.admin_password }}</td>
+				<td><a href = '/administration/adminmembers/delete/{{admin_username.id}}'>Delete</a></td>
+				
+
+			</tr>
+
+			{% endfor %}
+
+		</tbody>
+
+
+	</table>
+
+	 </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}
+
+
+</body>
+
+</html>

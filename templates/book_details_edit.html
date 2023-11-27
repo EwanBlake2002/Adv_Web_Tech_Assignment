@@ -1,0 +1,42 @@
+{% include 'admin_header.html' %}
+
+
+<body class = 'body'>
+
+
+
+
+
+<h1 class = 'admin-heading'>Edit A Book Record</h1>
+<form class = 'admin-form' action = '/administration/bookdetails/edit/{{book_title.id}}' method = 'POST'>
+	<label for = 'bookTitle'>Book Title:</label> 
+	<input type = 'text' required autofocus name = 'bookTitle' id = 'bookTitle' value = '{{book_title.book_title}}'>
+	<br>
+	<label for = 'bookDescription'>Book Description:</label> 
+	<textarea cols = '75' type ='text' required name = 'bookDescription' id = 'bookDescription'>{{book_title.book_description}}</textarea>
+	<br>
+	<label for = 'bookCover'>Book Cover:</label> 
+	<input type = 'text' name = 'bookCover' id = 'bookCover' required value = '{{book_title.book_cover}}'>
+
+	<br>
+	<label for = 'bookquoteOne'>Book Quote One:</label> 
+	<input type = 'text' name= 'bookquoteOne' required id = 'bookquoteOne' value = '{{book_title.book_quote_one}}'>
+	<br>
+	<label for = 'bookquoteTwo'>Book Quote Two:</label> 
+	<input type = 'text'name = 'bookquoteTwo' required id = 'bookquoteTwo' value = '{{book_title.book_quote_two}}'>
+	<br>
+	<label for = 'bookquoteThree'>Book Quote Three:</label> 
+	<input type = 'text' name = 'bookquoteThree' required id = 'bookquoteThree' value = '{{book_title.book_quote_three}}'>
+	<br>
+	<label for = 'bookquoteFour'>Book Quote Four:</label> 
+	<input type = 'text' name = 'bookquoteFour' required id = 'bookquoteFour' value = '{{book_title.book_quote_four}}'>
+	<br>
+	<br>
+	<input class = 'button' type = 'submit' value = 'Save'>
+
+</form>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="U-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Percy Jackson Fanclub Administration</title>
+		<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+		      rel="stylesheet"/>
+		<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+		<link href="{{ url_for('static', filename='css/stylesheet.css') }}"
+		      rel="stylesheet"/>
+	</head>
+
+	<header>
+
+		<div id = 'admin-navbar-container-fluid' class = 'container-fluid'>
+		<div class = 'container'>
+			<ul class = 'nav justify-content-center'>
+				<li class = 'nav-item'>
+					<a id = '{{ "active" if active_page == "members"}}' class = 'nav-link' href = '/administration/members/'>Members</a>
+				</li>
+				<li class = 'nav-item'>
+					<a id = '{{ "active" if active_page == "book_details"}}' class = 'nav-link' href = '/administration/bookdetails/'>Book Details</a>
+				</li>
+				<li class = 'nav-item'>
+					<a id = '{{ "active" if active_page == "admin_members"}}' class = 'nav-link' href = '/administration/adminmembers/'>Admin Members</a>
+				</li>
+				<li class = 'nav-item'>
+					<a id = '{{ "active" if active_page == "high_scores"}}' class = 'nav-link' href = '/administration/highscores/'>High Scores</a>
+				</li>
+				<li class = 'nav-item'>
+					<a class = 'nav-link' href = '/administration/logout/'>Logout</a>
+				</li>
+
+			</ul>
+		</div>
+		</div>
+	</header>
+
+	<body class = 'body'>

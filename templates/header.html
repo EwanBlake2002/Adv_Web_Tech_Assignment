@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="U-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Percy Jackson Fanclub</title>
+		<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+		      rel="stylesheet"/>
+		<script src="{{ url_for('static', filename = 'js/bootstrap.bundle.min.js')}}"></script>
+		<link href="{{ url_for('static', filename='css/stylesheet.css') }}"
+		      rel="stylesheet"/>
+	</head>
+
+	<header>
+	
+		<div id = 'title-container-fluid' class = 'container-fluid'>
+		<div class = 'container'>
+			<h1>Percy Jackson</h1>
+		</div>
+		</div>
+		<div id = 'navbar-container-fluid' class = 'container-fluid'>
+		<div class = 'container'>
+			<ul class="nav justify-content-center">
+			      <li class="nav-item">
+				      <a id = '{{ "active" if active_page == "home"}}' class="nav-link" href="/">Home</a>
+			      </li>
+			      <li class='nav-item'>
+	
+				      <a id = '{{ "active" if active_page == "book_gallery"}}' class='nav-link' href='/bookgallery/'>Book Gallery</a>
+			      </li>
+				<li class='nav-item'>
+					<a id = '{{ "active" if active_page == "about"}}' class='nav-link' href='/about/'>About</a>
+				</li>
+				<li class='nav-item'>
+					<a id = '{{ "active" if active_page == "games"}}' class='nav-link' href='/games/'>Games</a>
+				</li>
+
+				{% if session['logged_in'] %}
+				<li class = 'nav-item'>
+					<a class = 'nav-link' href = '/logout/'>Logout</a>
+				</li>
+
+				{% else %}
+
+				<li class='nav-item'>
+					<a id = '{{ "active" if active_page == "login"}}' class='nav-link' href='/login/'>Login</a>
+				</li>
+				<li class='nav-item'>
+					<a id = '{{ "active" if active_page == "register"}}' class='nav-link' href='/register/'>Register</a>
+				</li>
+
+				{% endif %}
+			</ul>
+		</div>
+		</div>
+		
+
+
+	</header>

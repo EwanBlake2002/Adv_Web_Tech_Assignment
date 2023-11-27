@@ -1,0 +1,31 @@
+{% set active_page = 'high_scores' %}
+
+{% include 'admin_header.html' %}
+
+<div style = 'padding-top:20px; padding-bottom:20px;' id = 'content-container' class = 'container'>
+
+	<table class = 'table'>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Score</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+
+		<tbody> {% for scores in high_scores %}
+			<tr>
+				<td>{{ scores.id }}</td>
+				<td>{{ scores.score }}</td>
+				<td><a href = '/administration/highscores/delete/{{scores.id}}'>Delete</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

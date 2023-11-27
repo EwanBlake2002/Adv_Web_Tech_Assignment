@@ -1,0 +1,67 @@
+{% set active_page = 'home' %}
+
+
+{% include 'header.html' %}
+
+
+<body class='body'>
+
+	<main>
+		<div id='content-container' class='container'>
+			<h2 class='sub-heading'>Chalice Of The Gods Has Arrived!</h2>
+			<div id='chaliceFindOutMore' class='container'>
+				<div class = 'row'>
+					<div class='col-sm-4'>
+						<img class = 'initialBookCover' src='{{ url_for("static", filename = "img/percyjacksonchalice.jpg")}}'>	
+
+					</div>
+					<div id = 'test' class='col-sm-8'>
+					
+					<p class = 'bodyText'>The 6th official entry in the long-running childhood series, Percy Jackson, is now out! Percy Jackson: Chalice Of The Gods is the 6th installment in the Percy Jackson mainline series, recommended to be read after Percy Jackson: The Last Olympian. Though the book itself is set between the Heroes Of Olympus and Trials Of Apollo series, they are not recommended reading for Percy Jackson: Chalice Of The Gods! Well...what are you waiting for!? Check it out now!!</p>
+					<a class= 'button' href = '/bookgallery/'>Find Out More</a>
+
+
+					</div>
+
+				
+
+				</div>
+
+
+			</div>
+
+			<hr class = 'line'>
+
+			<div class = 'container' id = 'communityContainer'>
+			
+				<h2 class = 'sub-heading'>What The Community Has To Offer!</h2>
+					<div class = 'row'>
+					<div class = 'col-sm-6'>
+					<img class = 'index-images' src = '{{ url_for("static", filename = "/img/percyjacksonbattle.jpg")}}'>
+					<p class = 'index-text'>Do you think you know Percy Jackson? If so, test your knowledge by undertaking a series of questions! The questions entailed revolve around events big and small in the Percy Jackson universe, giving you a variety of level of difficulty to truly test yourself! After you have completed the quiz, see how your score stacks up in high score leaderboard and if you are smart (or lucky) enough to find yourself on the high score leaderboard, see how your score compares to others who have taken this test! Do you have what it takes? Do you really <em>really</em> know Percy Jackson? Well...what are you waiting for!?</p>
+					<div class = 'button-center'>
+					<a class = 'button' href = '/games/'>Find Out More</a>
+					</div>
+					</div>
+					<div class = 'col-sm-6'>
+					<img class = 'index-images' src = '{{ url_for("static", filename = "/img/percyjacksonpicture.png")}}'>
+					<p class = 'index-text'>Delve into the history of how Percy Jackson was created, and whilst you are doing that, learn more about the author mastermind behind the series!</p>
+					<div class = 'button-center'>
+					<a class = 'button' href = '/about/'>Find Out More</a> 
+					</div>
+					</div>
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+	</main>
+
+{% include 'footer.html' %}
+
+</body>
+
+</html>

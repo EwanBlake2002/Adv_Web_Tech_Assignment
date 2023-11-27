@@ -1,0 +1,70 @@
+{% include 'header.html' %}
+
+<body class = 'body'>
+	<main>
+		<div id = 'content-container' class = 'container'>
+			
+			<div class = 'container' id = 'bookSection'>
+			<div class = 'row'>
+				<div class = 'col-sm-4'>
+					<img class = 'specificBookCover' src = '{{file_path_route}}'>
+
+				</div>
+
+				<div class = 'col-sm-8'>
+				     <p id = 'specificBookText'>{{book_gallery_obj.book_description}}</p>
+				     <div class = 'specificBookButton'>
+					     <a class = 'button' href = '{{book_gallery_obj.book_link}}'>Buy Now</a>
+				     </div>
+				</div>
+			</div>
+			</div>
+			<hr class = 'line'>
+
+			<div class = 'container' id = 'bookSection'>
+				<h2 class = 'sub-heading'>
+					Memorable Quotes!
+					</h2>
+				
+				<div class = 'row'>
+					<div class = 'col-sm-6'>
+						<blockquote class = 'book-quote'>"{{ book_gallery_obj.book_quote_one }}"</blockquote>
+
+					</div>
+
+					<div class = 'col-sm-6'>
+						<blockquote class = 'book-quote'>"{{ book_gallery_obj.book_quote_two }}"</blockquote>
+					</div>
+				</div>
+
+				<div class = 'row'>
+					<div class = 'col-sm-6'>
+						<blockquote class = 'book-quote'>"{{ book_gallery_obj.book_quote_three }}"</blockquote>
+					</div>
+
+					<div class = 'col-sm-6'>
+						<blockquote class = 'book-quote'>"{{ book_gallery_obj.book_quote_four }}"</blockquote>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+	</main>		
+
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}
+
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+@font-face{
+font-family: 'Windlass';
+src: url('font/Windlass.ttf') format('truetype');
+
+}
+
+@font-face{
+	font-family: 'Gabarito Regular';
+	src: url('font/Gabarito-Regular.ttf') format('truetype');
+
+}
+
+
+#title-container-fluid{
+	background-color: #ffd189;
+	
+
+}
+
+#title-container-fluid .container h1{
+	text-align: center;
+	font-family: 'Windlass', sans-serif;
+	padding-top: 15px;
+	padding-bottom:15px;
+	color: #c7bfea;
+	-webkit-text-stroke: 1px #000000;
+	text-shadow:0px 0px 5px #000000;
+	
+}
+
+#navbar-container-fluid{
+	text-align: center;
+	background-color: #c7bfea;
+	margin-top:-15px;
+
+}
+
+.nav-item a{
+	font-family: 'Gabarito Regular', sans-serif;
+	color: black;
+	display: inline-block;
+	position: relative;
+}
+
+.nav-item a::after{
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #ffd189;
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+	color: #ffd189;
+}
+
+.nav-item a:hover::after{
+	transform: scaleX(1);
+	transform-origin: bottom left;
+	color: #ffd189;
+
+	
+
+}
+
+.nav-item a:hover{
+	color: black;
+}
+
+footer{
+	position: absolute;
+	width: 100%;
+	background-color: #ffd189;
+	color: #000000;
+	font-family: 'Gabarito Regular', sans-serif;
+}
+
+
+
+.body{
+	background-color: #9ba5f0;
+	margin:0;
+	overflow-x:hidden;
+	padding:0;
+	height:100%;
+
+}
+
+#content-container{
+	background-color: #bcdae5;
+	
+	
+}
+
+.sub-heading{
+	font-family:'Windlass', sans-serif;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;
+	-webkit-text-stroke:1px black;
+	color:#c7bfea;
+
+}
+
+.line{
+	height: 1px;
+	background-color: #000000;	
+	width: 80%;
+}
+
+.initialBookCover{
+	width:100%;
+	height:450px;
+	float:right;
+}
+
+.bodyText{
+	text-align:left;
+	padding-right:75px;
+	font-family: 'Gabarito Regular', sans-serif;
+
+}
+
+.button{
+	font-family: 'Gabarito Regular', sans-serif;
+	outline:0;
+	background:#ffd189;
+	width:100%;
+	border:0px;
+	padding:15px;
+	color:#000000;
+	font-size:14px;
+	-webkit-transition: all 0.3 ease;
+	transition:0.5s ease-in-out;
+	cursor:pointer;
+	background:linear-gradient(to right, #ffd189 50%, #c7bfea 50%);
+	background-size:200% 100%;
+
+}
+
+.button:hover,
+.button:active,
+.button:focus{
+	background-color:#c7bfea;
+	text-decoration:none;
+	background-position: right bottom;
+	color:#ffffff;	
+}
+
+#admin-navbar-container-fluid{
+	text-align: center;
+	background-color: #c7bfea;
+}
+
+.add-button{
+	text-align: center;
+}
+
+#active{
+	color: blue ;
+
+}
+
+.index-images{
+	width:100%;
+	height:325px;
+	text-align:center;
+	padding-top:15px;
+}
+
+.index-text{
+	text-align:left;
+	padding-top:10px;
+	font-family: 'Gabarito Regular', sans-serif;
+}
+
+.button-center{
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:40px;
+}
+
+#bookSection{
+	padding-bottom:25px ;
+}
+
+#bookSection .bookGalleryCover{
+	width:100%;
+	height:315px;
+}
+
+.bookGalleryText{
+	text-align:center;
+	font-family: 'Gabarito Regular';
+}
+
+.boxed-content{
+	text-align:center;
+}
+
+
+.bookGalleryLine{
+	background-color:black;
+	width:100%;
+	height:1px;
+	display:none;
+}
+
+@media (min-width:600px) and (max-width: 1000px){
+
+	.initialBookCover{
+		height:300px;
+		
+
+
+	}
+
+
+
+
+}
+
+@media (min-width: 350px) (max-width: 599px){
+	.initialBookCover{
+		height:550px;
+	}
+	
+	.bookGalleryLine{
+		display:normal;
+	}
+
+}
